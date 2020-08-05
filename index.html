@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Netflix History Analytics</title>
+        <title>Analytics & Chill</title>
     </head>
 
     <script src="script.js"></script>
 
     <body>
-        <div>
-            <input id="uploadInput" type="file" accept=".csv" name="myFile" onchange='getFile(event)'>
-            <input type="button" value="Upload" onclick="processFile()">
+        <div id="input">
+            <input id="uploadInput" type="file" accept=".csv" name="myFile">
+            <input type="button" value="Upload" onclick="ingestFile()">
+            <div id="progressBar">
+                <body>progress bar will go here</body>
+            </div>
         </div>
         <div id='output'></div>
     </body>
