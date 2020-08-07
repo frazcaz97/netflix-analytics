@@ -5,14 +5,19 @@
     </head>
 
     <script src="script.js"></script>
+    <script src="apiRequest.js"></script>
+    <script src="csv.js"></script>
+    <link href="style.css" rel="stylesheet">
 
     <body>
+        <div id="title">ANAYTICS & CHILL</div>
         <div id="input">
                 <input id="uploadInput" type="file" accept=".csv" name="myFile">
                 <input id="apiKeyField" type="text" name="APIkey">
-                <input type="button" value="Upload" onclick="ingestFile()">
+                <input type="button" value="Upload" onclick="getFile()">
             <div id="progressBar">
-                <body>progress bar will go here</body>
+                <body>progress bar will go here</body><br>
+                <body id = "progressText">progress text will go here</body>
             </div>
         </div>
         <div id='output'></div>
