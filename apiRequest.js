@@ -1,15 +1,15 @@
 class apiRequest {
     constructor(title,apiKey) {
-        this.title = title;
-        this.apiKey = apiKey;
+        this._title = title;
+        this._apiKey = apiKey;
         this._data = null;
     }
 
-    makeRequest() {
-        const request = fetch(`http://www.omdbapi.com/?t=${this.title}&apikey=${this.apikey}`)
-        .then(response => response.json())
-        .then(data => data);
-        this._data = request;
+    async runRequest() {
+        const url = encodeURI(`http://www.omdbapi.com/?t=${this._title}&apikey=${this._apiKey}`)
+        const request = await fetch(url)
+        const data = await request.json();
+        return data;
     }
 
     get data() {
