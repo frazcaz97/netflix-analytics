@@ -49,16 +49,23 @@ const createAnalytics = function(file) {
         let noTVShows = 0;
         let noTVEpisodes = 0;
         let totalEntries = file.length;
+        let tempArr = [];
 
         for (let row of file) {
             if (row[2] == "Film") {
                 noFilms++;
             } else {
                 noTVEpisodes++;
-                //create a temp array of unique tv shows, need to figure out how to get this unique data set
+
+                let filterName = row[0].substring(0, row[0].indexOf(":"));  //get the name of the show
+
+                if (!tempArr.includes(filterName)) {    //only store unqiue entries
+                    tempArr.push(filterName);
+                }
             }
         }
-        return {noFilms: noFilms, noTVShows: noTVEpisodes, noTVEpisodes: noTVEpisodes, totalEntries: totalEntries};
+        noTVShows = tempArr.length;     
+        return {noFilms: noFilms, noTVShows: noTVShows, noTVEpisodes: noTVEpisodes, totalEntries: totalEntries};
     }
 
     getFilmOrTV(file);
