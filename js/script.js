@@ -1,3 +1,4 @@
+let apiKey = "";
 const reader = new FileReader();
 
 const getFile = function() {
@@ -28,46 +29,5 @@ const getFile = function() {
 
 const createAnalytics = function(file) {
 
-    const getFilmOrTV = function(file) {
-        for (let title in file) {
-            if (file[title][0].includes(":")) {
-                let colonCount = 0;
-
-                for (let char of file[title][0]) {
-                    colonCount += char == ":" ? 1 : 0;
-                }
-                file[title][2] = colonCount == 1 ? "Film" : "TV";   //films <= 1 :, TV >= 2
-            }
-            else {
-                file[title][2] = "Film";    //no : means its a film
-            }
-        }
-    }
-
-    const getTotals = function(file) {
-        let noFilms = 0;
-        let noTVShows = 0;
-        let noTVEpisodes = 0;
-        let totalEntries = file.length;
-        let tempArr = [];
-
-        for (let row of file) {
-            if (row[2] == "Film") {
-                noFilms++;
-            } else {
-                noTVEpisodes++;
-
-                let filterName = row[0].substring(0, row[0].indexOf(":"));  //get the name of the show
-
-                if (!tempArr.includes(filterName)) {    //only store unqiue entries
-                    tempArr.push(filterName);
-                }
-            }
-        }
-        noTVShows = tempArr.length;     
-        return {noFilms: noFilms, noTVShows: noTVShows, noTVEpisodes: noTVEpisodes, totalEntries: totalEntries};
-    }
-
-    getFilmOrTV(file);
-    const totals = getTotals(file);
+    
 }
