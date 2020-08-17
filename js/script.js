@@ -50,13 +50,13 @@ const createAnalytics = function(file) {
 
     const getExtremes = function(data) {
         let extremes = {
-            high: {
-                date: "",
-                count: 0
+            high : {
+                date : "",
+                count : 0
             },
-            low: {
-                date: "",
-                count: 0
+            low : {
+                date : "",
+                count : 0
             }
         }
 
@@ -79,8 +79,19 @@ const createAnalytics = function(file) {
     }
 
     const getAverages = function (data) {
-        //get day average by counting all and dividing by the number of days
-        //how do we get the average for weeks and months though
+        let dall = 0;
+        let avg = {
+            day : 0,
+            week : 0,
+            month : 0
+        }
+
+        for (let row of data) { //get day average value
+            dall += row[1];
+        }
+        avg["day"] = dall / data.length;
+        
+        return avg;
     }
 
     let data = baseDataSet();
@@ -88,4 +99,5 @@ const createAnalytics = function(file) {
     let dataSetTwo = getAverages(data);
     console.log(data);
     console.log(dataSetOne);
+    console.log(dataSetTwo);
 }
