@@ -20,84 +20,26 @@ const getFile = function() {
         reader.onload = function(event) {
             let CSV = new csv(event.target.result); //create csv out of text file
             CSV.create();
-            createAnalytics(CSV.csv);
+            getAnalytics(CSV.csv);
             
         }
         reader.readAsText(file);
     }
 }
 
-const createAnalytics = function(file) {
-    const baseDataSet = function() {
-        let dateSet = new Set();
-        let arr = [];
+const getAnalytics = function(csv) {
+    const Analytics = new analytics(csv);
+    const perDayData = Analytics.getDayData();
+    const perWeekData = Analytics.getWeekDate();
+    const min = Analytics.getMin(perDayData);
+    const max = Analytics.getMax(perDayData);
+    const averages = Analytics.getAverages(perDayData);
 
-        for (let row of file) { //get unique dates
-            dateSet.add(row[1]);
-        }
 
-        for (let date of dateSet) { //count number of recuring days
-            let n = 0;
-            for (let i = 0; i < file.length; i++) {
-                if (file[i][1].includes(date)) {
-                    n++;
-                }
-            }
-            arr.push([date, n]);
-        }
-        return arr;
-    }
+    console.log(perDayData);
+    console.log(perWeekData);
+    console.log(min);
+    console.log(max);
+    console.log(averages);
 
-    const getExtremes = function(data) {
-        let extremes = {
-            high : {
-                date : "",
-                count : 0
-            },
-            low : {
-                date : "",
-                count : 0
-            }
-        }
-
-        let highNum = 0;
-        let lowNum = Infinity;
-        
-        for (let j = 0; j < data.length; j++) {
-            if (data[j][1] > highNum) {  //found new most viewed day
-                highNum = data[j][1];
-                extremes["high"]["date"] = data[j][0]; 
-                extremes["high"]["count"] = data[j][1];
-            } 
-            else if (data[j][1] < lowNum) {  //found new least viewed day
-                lowNum = data[j][1];
-                extremes["low"]["date"] = data[j][0]; 
-                extremes["low"]["count"] = data[j][1];
-            }
-        }
-        return extremes;
-    }
-
-    const getAverages = function (data) {
-        let dall = 0;
-        let avg = {
-            day : 0,
-            week : 0,
-            month : 0
-        }
-
-        for (let row of data) { //get day average value
-            dall += row[1];
-        }
-        avg["day"] = dall / data.length;
-        
-        return avg;
-    }
-
-    let data = baseDataSet();
-    let dataSetOne = getExtremes(data);
-    let dataSetTwo = getAverages(data);
-    console.log(data);
-    console.log(dataSetOne);
-    console.log(dataSetTwo);
 }
