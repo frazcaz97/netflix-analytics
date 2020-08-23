@@ -28,18 +28,19 @@ const getFile = function() {
 }
 
 const getAnalytics = function(csv) {
-    const Analytics = new analytics(csv);
-    const perDayData = Analytics.getDayData();
-    const perWeekData = Analytics.getWeekDate();
-    const min = Analytics.getMin(perDayData);
-    const max = Analytics.getMax(perDayData);
-    const averages = Analytics.getAverages(perDayData);
+    const perDayData = getDayData(csv);
+    const perMonthData = getMonthData(perDayData);
+    const perYearData = getYearData(perDayData);
+    const min = getMin(perDayData);
+    const max = getMax(perDayData);
+    const averages = getAverages(perDayData);
 
 
-    console.log(perDayData);
-    console.log(perWeekData);
-    console.log(min);
-    console.log(max);
-    console.log(averages);
+    console.log("per day viewings: " + JSON.stringify(perDayData));
+    console.log("per month viewings: " + JSON.stringify(perMonthData));
+    console.log("per year viewings: " + JSON.stringify(perYearData));
+    console.log("minimum day viewings: " + JSON.stringify(min));
+    console.log("maximum day viewings: " + JSON.stringify(max));
+    console.log("averages: " + JSON.stringify(averages));
 
 }
