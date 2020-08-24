@@ -7,7 +7,7 @@ const getDateObject = date => { //returns an object of day, month, year
     }
 }
 
-const getDayData = data => { //return array of each days total viewings
+const getDayViews = data => { //return array of each days total viewings
     let days = new Set();
     let arr = [];
 
@@ -28,15 +28,40 @@ const getDayData = data => { //return array of each days total viewings
     return arr;
 }
 
-const getWeekData = data => {
+const getWeekViews = data => {
     return null;
 }
 
-const getMonthData = data => {
-    return null;
+const getMonthViews = data => {
+    let months = new Set();
+    let arr = [];
+
+    for (let row of data) {
+        let value = getDateObject(row[0]);
+        months.add(JSON.stringify({month : value.month, year : value.year}));
+    }
+
+    for (let month of months) {
+        let n = 0;
+        let date1 = JSON.parse(month);
+
+        for (let i = 0; i < data.length; i++) {
+            let date2 = getDateObject(data[i][0]);  //transform date string into object to compare
+
+            if (date2["year"].includes(date1.year)) {
+
+                if (date2["month"].includes(date1.month)) {
+                    n += data[i][1];
+                }
+            }
+        }
+
+        arr.push([date1.month, date1.year, n]);
+    }
+    return arr;
 }
 
-const getYearData = data => { //return array of each years total viewings
+const getYearViews = data => { //return array of each years total viewings
     let years = new Set();
     let arr = [];
 
@@ -57,7 +82,7 @@ const getYearData = data => { //return array of each years total viewings
     return arr;
 }
 
-const getMin = data => {
+const getMinDayViews = data => {
     let minData = {
         date : "",
         count : ""
@@ -75,7 +100,7 @@ const getMin = data => {
     return minData;
 }
 
-const getMax = data => {
+const getMaxDayViews = data => {
     let maxData = {
         date : "",
         count : ""
@@ -93,7 +118,7 @@ const getMax = data => {
     return maxData;
 }
 
-const getAverages = data => {
+const getAverageViews = data => {
     const timeRange = (firstDay, lastDay) => {    //return a time range in mili
         let lastArr = lastDay.split("/");
         let firstArr = firstDay.split("/");
