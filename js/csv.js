@@ -18,7 +18,6 @@ class csv {
             }
             this._csv.push(subarr);
         }
-        console.log(this._csv);
     }
 
     get csv() {
