@@ -1,6 +1,6 @@
 class analytics {
 constructor() {/*class for nameSpace*/}
-    //TO BE REFACTORED--------------------------------------------------------
+
     getDateObject(date) { //returns an object of day, month, year
         const arr = date.split("/");
         return { day : arr[0], month : arr[1], year : arr[2] };
@@ -89,7 +89,7 @@ constructor() {/*class for nameSpace*/}
         }
         return result;
     }
-    //END OF STUFF TO REFACTOR-----------------------------------------------------------------
+    
     getYearViews(data) { //return array of each years total viewings
         let [years, result] = [new Set(), []];
 
