@@ -34,14 +34,6 @@ const getAnalytics = function(csv) {
     const perYearViews = a.getYearViews(perDayViews);
     const minViews = a.getMinViews(perDayViews);
     const maxViews = a.getMaxViews(perDayViews);
+    const totalViews = a.getTotal(perDayViews);
     const averageViews = a.getAverageViews(perDayViews);
-
-
-    console.log("per day viewings: " + JSON.stringify(perDayViews));
-    console.log("per week viewings: " + JSON.stringify(perWeekViews));
-    console.log("per month viewings: " + JSON.stringify(perMonthViews));
-    console.log("per year viewings: " + JSON.stringify(perYearViews));
-    console.log("minimum day viewings: " + JSON.stringify(minViews));
-    console.log("maximum day viewings: " + JSON.stringify(maxViews));
-    console.log("averages: " + JSON.stringify(averageViews));
 }
