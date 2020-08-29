@@ -25,7 +25,6 @@ html {
     z-index: -1;
     display:none;
 }
-
 .btn {
     display: table-cell;
     width: 150px;
@@ -42,7 +41,6 @@ html {
     font-family: sans-serif;
     font-size: 1.15em;  
 }
-
 .btn:hover {
     transition: 0.2s ease-in;
     background: #ffffff;
@@ -50,23 +48,36 @@ html {
     font-weight: bolder;
     
 }
-
 .btn:active {
     transition: 0ms;
     border-color: #34c22d;
     background-color: #34c22d;
 }
 
-#file-name {
-    display: inline;
-    color: white;
-    position: relative;
-    left: 50%;
-    top: 50%;
+#home-page-container {
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 15%;
 }
-
-#home-page {
-    display: inline;
+#file-bar-container {
+    grid-column-start: 2;
+    display:grid;
+    grid-template-columns: 20% 60% 20%;
+}
+#upload-btn {
+    grid-column-start: 1;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: auto;
+}
+#file-name {
+    grid-column-start: 2;
+}
+#submit-btn {
+    grid-column-start: 3;
 }
 
 #analytics-page {
