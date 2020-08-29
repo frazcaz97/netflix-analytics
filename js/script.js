@@ -1,7 +1,11 @@
 const reader = new FileReader();
 
+const setFileName = () => {
+    document.getElementById("file-name").innerHTML = document.getElementById("upload").files[0].name;
+}
+
 const getFile = function() {
-    const file = document.getElementById("uploadInput").files[0];
+    const file = document.getElementById("upload").files[0];
 
     if (!file.name.includes(".csv")) {  //only accept csv files
         alert("please upload a csv file");
