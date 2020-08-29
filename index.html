@@ -6,21 +6,35 @@
 
     <script src="/js/csv.js"></script>
     <script src="/js/analytics.js"></script>
+    <script src="/js/transition.js"></script>
     <script src="/js/script.js"></script>
     <link href="style.css" rel="stylesheet">
 
     <body>
-        <div id="title">ANAYTICS & CHILL</div>
-        <div id="input">
-                <input id="uploadInput" type="file" accept=".csv" name="myFile">
-                <input id="apiKeyField" type="text" name="APIkey">
-                <input type="button" value="Upload" onclick="getFile()">
-            <div id="progressBar">
-                <body>progress bar will go here</body><br>
-                <body id = "progressText">progress text will go here</body>
+        <img src="svg/title.svg" class="title-image"/>
+        <div id="home-page">
+            <div class="btn-wrapper">
+                <label class="btn" for="upload">Upload</label>
+                <input id="upload" type="file" accept=".csv" onchange="setFileName()"/>
             </div>
+            <p id="file-name"></p>
+            <div class="btn-wrapper">
+                <label class="btn" for="submit">Submit</label>
+                <input id="submit" type="button" onclick="getFile()"/>
+            </div>
+            <div id="input">
+                    <input type="button" value="Test Transiton 1" onclick="runTransition()">
+                <div id="progressBar">
+                    <body>progress bar will go here</body><br> <!--temp-->
+                    <body id = "progressText">progress text will go here</body> <!--temp-->
+                </div>
+            </div>
+            <div id='output'></div>
         </div>
-        <div id='output'></div>
+        <div id="analytics-page" style="display: none;">
+            <body>This would be the analytics page</body>
+            <input type="button" value="Test Transiton 2" onclick="runTransition()">
+        </div>
     </body>
 </html>
 
