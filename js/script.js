@@ -1,14 +1,25 @@
 const reader = new FileReader();
 
 const setFileName = () => {
-    document.getElementById("file-name").innerHTML = document.getElementById("upload").files[0].name;
+    const filename = document.getElementById("upload").files[0].name;
+
+    if (filename.includes(".csv")) {
+        document.getElementById("file-name-field").setAttribute("style", "color: #34c22d; border: 2px solid #34c22d;");
+        document.getElementById("file-name-field").innerHTML = filename;
+        document.getElementById("submit").disabled = false;
+    } else {
+        document.getElementById("file-name-field").setAttribute("style", "color: red; border: 2px solid red;");
+        document.getElementById("file-name-field").innerHTML = "incorrect file type uploaded, expected a csv file";
+        document.getElementById("submit").disabled = true;
+        document.getElementById("submit-label").setAttribute("style", "opacity: 50%; pointer-events: none;");
+    }
 }
 
-const getFile = function() {
+const getFile = () => {
     const file = document.getElementById("upload").files[0];
 
     if (!file.name.includes(".csv")) {  //only accept csv files
-        alert("please upload a csv file");
+        alert("incorrect file type submitted, expected: '.csv'");
     } else {
         reader.onabort = function() {
             document.getElementById("progressText").innerHTML = "File upload aborted";
@@ -30,7 +41,7 @@ const getFile = function() {
     }
 }
 
-const getAnalytics = function(csv) {
+const getAnalytics = csv => {
     let a = new analytics();
     const perDayViews = a.getDayViews(csv);
     const perWeekViews = a.getWeekViews(perDayViews);
