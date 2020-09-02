@@ -17,12 +17,12 @@
         <div id="home-page-container">
             <div id="file-bar-container">
                 <div class="btn-wrapper" id="upload-btn">
-                    <label class="btn" for="upload">Upload</label>
+                    <label class="btn" id="upload-label" for="upload">Upload</label>
                     <input id="upload" type="file" accept=".csv" onchange="setFileName()"/>
                 </div>
-                <div id="file-name">TEMP_TEXT</div>
+                <div id="file-name-field">please upload a netflix history .csv file</div>
                 <div class="btn-wrapper" id="submit-btn">
-                    <label class="btn" for="submit">Submit</label>
+                    <label class="btn" id="submit-label" for="submit">Submit</label>
                     <input id="submit" type="button" onclick="getFile()"/>
                 </div>
             </div>
