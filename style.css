@@ -6,7 +6,6 @@ html {
     display: block;
     max-width: 100%;
     max-height: 100%;
-    width: 50%;
     margin-left: auto;
     margin-right: auto;  
 }
@@ -25,6 +24,7 @@ html {
     z-index: -1;
     display:none;
 }
+
 .btn {
     display: table-cell;
     width: 150px;
@@ -59,7 +59,12 @@ html {
     grid-template-columns: 20% 60% 20%;
     max-width: 100%;
     max-height: 100%;
-    margin-top: 15%;
+    margin: auto;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
 }
 #file-bar-container {
     grid-column-start: 2;
@@ -71,13 +76,25 @@ html {
     display: block;
     max-width: 100%;
     max-height: 100%;
-    margin-left: auto;
-}
-#file-name {
-    grid-column-start: 2;
+    margin: auto;
 }
 #submit-btn {
     grid-column-start: 3;
+    margin: auto;
+}
+
+#file-name-field {
+    grid-column-start: 2;
+    text-align: center;
+    color:#7d7d7d;
+    font-family: sans-serif;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    width: 95%;
+    height: 40px;
+    margin: auto;
+    line-height: 40px;
+    font-size: 1.15em;
 }
 
 #analytics-page {
