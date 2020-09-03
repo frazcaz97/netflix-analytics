@@ -1,14 +1,16 @@
 const reader = new FileReader();
+let startTime;
 
 const setFileName = () => {
     const filename = document.getElementById("upload").files[0].name;
 
     if (filename.includes(".csv")) {
-        document.getElementById("file-name-field").setAttribute("style", "color: #34c22d; border: 2px solid #34c22d;");
+        document.getElementById("file-name-field").setAttribute("style", "color: #34c22d; border-bottom: 2px solid #34c22d;");
         document.getElementById("file-name-field").innerHTML = filename;
         document.getElementById("submit").disabled = false;
+        document.getElementById("submit-label").setAttribute("style", "");
     } else {
-        document.getElementById("file-name-field").setAttribute("style", "color: red; border: 2px solid red;");
+        document.getElementById("file-name-field").setAttribute("style", "color: #e50914; border-bottom: 2px solid #e50914;");
         document.getElementById("file-name-field").innerHTML = "incorrect file type uploaded, expected a csv file";
         document.getElementById("submit").disabled = true;
         document.getElementById("submit-label").setAttribute("style", "opacity: 50%; pointer-events: none;");
@@ -16,6 +18,7 @@ const setFileName = () => {
 }
 
 const getFile = () => {
+    startTime = new Date().getTime();
     const file = document.getElementById("upload").files[0];
 
     if (!file.name.includes(".csv")) {  //only accept csv files
@@ -51,4 +54,13 @@ const getAnalytics = csv => {
     const maxViews = a.getMaxViews(perDayViews);
     const totalViews = a.getTotal(perDayViews);
     const averageViews = a.getAverageViews(perDayViews);
+
+    showAnalytics();
+}
+
+const showAnalytics = () => {
+    const endTime = new Date().getTime();
+    const elapsedTime = (endTime - startTime);
+    console.log(elapsedTime + " milliseconds");
+    document.getElementById("show-btn").style.display = "inline";
 }
