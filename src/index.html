@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Analytics & Chill</title>
+        <link rel="stylesheet" href="./style.css">
+        <script src="./js/csv.js"></script>
+        <script src="./js/analytics.js"></script>
+        <script src="./js/transition.js"></script>
+        <script src="./js/script.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <img src="./images/title.svg" class="title-image"/>
+        </header>
+        <div id="home-page-container">
+            <div id="file-bar-container">
+                <div class="btn-wrapper" id="upload-btn">
+                    <label class="btn" id="upload-label" for="upload">Upload</label>
+                    <input id="upload" type="file" accept=".csv" onchange="setFileName()"/>
+                </div>
+                <div id="file-name-field">please upload a netflix history.csv file</div>
+                <div class="btn-wrapper" id="show-btn" style="display: none;">
+                    <label class="btn" id="show-label" for="show">Display Analytics</label>
+                    <input id="show" type="button" onclick="transition()">
+                </div>
+                <div class="btn-wrapper" id="submit-btn">
+                    <label class="btn" id="submit-label" for="submit">Submit</label>
+                    <input id="submit" type="button" onclick="getFile()"/>
+                </div>
+            </div>
+        </div>
+        <div id="screen-animation"></div>
+        <div id="analytics-page-container" style="display: none;">
+            <input type="button" value="Test Transiton 2" onclick="transition()">
+        </div>
+        <footer>
+            <div id="github-link"></div>
+        </footer>
+    </body>
+</html>
+
+
