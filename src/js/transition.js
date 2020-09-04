@@ -4,12 +4,12 @@ let isAnalyticsPage = false;
 
 const transition = () => {
     if (isHomePage) {
-        styleSheets.insertRule("#screen-animation {position: absolute; z-index: 100; top: 0%; left: 0%; right: 0%; bottom: 0%; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background: #e50914; animation: wipe-left 5s ease-in-out;}",0);
+        styleSheets.insertRule("#screen-animation {position: absolute; z-index: 100; top: 0%; left: 0%; right: 0%; bottom: 0%; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background: #e50914; animation: wipe-left 3s ease-in-out;}",0);
     } else {
-        styleSheets.insertRule("#screen-animation {position: absolute; z-index: 100; top: 0%; left: 0%; right: 0%; bottom: 0%; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background: #e50914; animation: wipe-right 5s ease-in-out;}",0);
+        styleSheets.insertRule("#screen-animation {position: absolute; z-index: 100; top: 0%; left: 0%; right: 0%; bottom: 0%; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background: #e50914; animation: wipe-right 3s ease-in-out;}",0);
     }
-    setTimeout(runTransition, 2500);
-    setTimeout(removeTransition, 4990);
+    setTimeout(runTransition, 1500);
+    setTimeout(removeTransition, 2990);
 }
 
 const runTransition = () => {
