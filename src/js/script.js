@@ -30,9 +30,9 @@ const getFile = () => {
         reader.onerror = function() {
             document.getElementById("progressText").innerHTML = "ERROR: please try uploading the file again";
         }
-        reader.onprogress = function(event) {   //TEMP this will be used for the progress bar
-            console.log("current: " + event.loaded);
-            console.log("total: " + event.total);
+        reader.onprogress = function(event) {
+            document.getElementById("progress-field").style.display = "block";
+            document.getElementById("progress-field").innerHTML = "Uploading csv file...";
         }
         reader.onload = function(event) {
             let CSV = new csv(event.target.result); //create csv out of text file
@@ -45,6 +45,7 @@ const getFile = () => {
 }
 
 const getAnalytics = csv => {
+    document.getElementById("progress-field").innerHTML = "generating analytics...";
     let a = new analytics();
     const perDayViews = a.getDayViews(csv);
     const perWeekViews = a.getWeekViews(perDayViews);
@@ -54,6 +55,7 @@ const getAnalytics = csv => {
     const maxViews = a.getMaxViews(perDayViews);
     const totalViews = a.getTotal(perDayViews);
     const averageViews = a.getAverageViews(perDayViews);
+    const days = a.getDayAverages(perDayViews);
 
     showAnalytics();
 }
@@ -62,5 +64,6 @@ const showAnalytics = () => {
     const endTime = new Date().getTime();
     const elapsedTime = (endTime - startTime);
     console.log(elapsedTime + " milliseconds");
+    document.getElementById("progress-field").style.display = "none";
     document.getElementById("show-btn").style.display = "inline";
 }
