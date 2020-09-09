@@ -166,4 +166,34 @@ constructor() {/*class for nameSpace*/}
             year : (total / years).toFixed(1)
         }
     }
+
+    getDayAverages(data) {
+
+        let dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        let result = {};
+
+        for (let row in data) { //get the day for each row
+            let dateObj = this.getDateObject(data[row]["date"]);
+            let dayNum = new Date(dateObj["year"] + "/" + dateObj["month"] + "/" + dateObj["day"]).getDay();
+            data[row]["day"] = dayArr[dayNum];;
+        }
+
+        for (let day of dayArr) {   //get the average for each day
+            let dayTotal = 0;
+            let count = 0;
+            let avg = 0;
+
+            for (let i = 0; i < data.length; i++) {
+                if (data[i]["day"].includes(day)) {
+                    dayTotal += data[i]["views"];
+                    count++;
+                }
+            }
+
+            avg = dayTotal / count;
+            result[day] = avg.toFixed(2);
+        }
+
+        return result;
+    }
 }
