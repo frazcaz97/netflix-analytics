@@ -20,6 +20,7 @@
                     <input id="upload" type="file" accept=".csv" onchange="setFileName()"/>
                 </div>
                 <div id="file-name-field">please upload a netflix history.csv file</div>
+                <div id="progress-field" style="display: none;"></div>
                 <div class="btn-wrapper" id="show-btn" style="display: none;">
                     <label class="btn" id="show-label" for="show">Display Analytics</label>
                     <input id="show" type="button" onclick="transition()">
@@ -35,7 +36,10 @@
             <input type="button" value="Test Transiton 2" onclick="transition()">
         </div>
         <footer>
-            <div id="github-link"></div>
+            <div id="github-link">
+                <p id="github-text">View the source code here</p>
+                <img id="github-image" src="./images/GitHub-Mark-Light-32px.png"/>
+            </div>
         </footer>
     </body>
 </html>
