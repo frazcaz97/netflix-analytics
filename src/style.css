@@ -42,6 +42,7 @@ html {
     font-size: 1.15em;  
 }
 .btn:hover {
+    cursor: pointer;
     transition: 0.2s ease-in;
     background: #e50914;
     color: #ffffff;
@@ -49,6 +50,7 @@ html {
     
 }
 .btn:active {
+    cursor: pointer;
     transition: 0ms;
     border-color: #ffffff;
     background-color: #ffffff;
@@ -169,11 +171,44 @@ footer {
     height: 5%;
     left: 0px;
     bottom: 0px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#how-to {
+    align-self: center;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1em;
+    position: absolute;
+    left: 1%;
 }
 
 #github-link {
-    position: relative;
-    margin-left: 50%;
+    position: absolute;
+    display: grid;
+    grid-column-start: 1;
+    grid-template-columns: 175px 32px;
+    right: 1%;
+}
+
+.link:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+.link:active {
+    cursor: pointer;
+    opacity: 0%;
+}
+
+#github-image {
+    align-self: center;
+}
+#github-text {
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1em;
+    align-self: center;
 }
 
 #analytics-page-container {
