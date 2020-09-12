@@ -56,6 +56,9 @@ const getAnalytics = csv => {
     const totalViews = a.getTotal(perDayViews);
     const averageViews = a.getAverageViews(perDayViews);
     const days = a.getDayAverages(perDayViews);
+    const activity = a.getActivity(days);
+
+    console.log(activity);
 
     showAnalytics();
 }
