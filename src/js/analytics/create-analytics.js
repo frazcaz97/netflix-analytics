@@ -1,17 +1,17 @@
-class analytics {
+class Analytics {
 
-    constructor() {
-
+    constructor(csv) {
+        this._csv = csv;
     }
 
-    getDateObject(date) { //returns an object of day, month, year
+    dateObject(date) { //returns an object of day, month, year
         const arr = date.split("/");
         return { day : arr[0], month : arr[1], year : arr[2] };
     }
 
-    getDayViews(data) { //return array of each days total viewings
+    dayViews(data) { //return array of each days total viewings
         let [days, result] = [new Set(), []];
-
+        
         for (let row of data)   //create a set of days
             days.add(row[1]);
 
@@ -25,7 +25,7 @@ class analytics {
         return result;
     }
 
-    getWeekViews(data) {
+    weekViews(data) {
         let [id, weeks, weekViews, result] = ["", new Set(), [], []];
 
         const isInRange = (value, min, max) => {    //check if day is in range of week
@@ -33,7 +33,7 @@ class analytics {
         }
 
         for (let day of data) { //create set of unique weeks and array of weeks + views objects
-            let date = this.getDateObject(day["date"]);   //transform date string into object to compare
+            let date = this.dateObject(day["date"]);   //transform date string into object to compare
 
             if (isInRange(date["day"], 1, 7)) {
                 id = "week 1";
@@ -68,11 +68,11 @@ class analytics {
         return result;
     }
 
-    getMonthViews(data) {
+    monthViews(data) {
         let [months, result] = [new Set(), []];
 
         for (let row of data) { //create set of unique months
-            let value = this.getDateObject(row["date"]);
+            let value = this.dateObject(row["date"]);
             months.add(JSON.stringify({ month : value["month"], year : value["year"] }));
         }
 
@@ -81,7 +81,7 @@ class analytics {
             month = JSON.parse(month);
 
             for (let i = 0; i < data.length; i++) {
-                const date = this.getDateObject(data[i]["date"]);  //transform date string into object to compare
+                const date = this.dateObject(data[i]["date"]);  //transform date string into object to compare
                 if (date["year"].includes(month["year"])) {
                     if (date["month"].includes(month["month"])) {
                         value += data[i]["views"];
@@ -93,11 +93,11 @@ class analytics {
         return result;
     }
     
-    getYearViews(data) { //return array of each years total viewings
+    yearViews(data) { //return array of each years total viewings
         let [years, result] = [new Set(), []];
 
         for (let row of data) {    //create a set of years
-            let value = this.getDateObject(row["date"]);
+            let value = this.dateObject(row["date"]);
             years.add(value.year);
         }
         
@@ -113,7 +113,7 @@ class analytics {
         return result;
     }
 
-    getMinViews(data) { //return least watched day
+    minViews(data) { //return least watched day
         let [num, date, value] = [Infinity, "", Infinity];
 
         for (let i = 0; i < data.length; i++) {
@@ -124,7 +124,7 @@ class analytics {
         return { date : date, value : value };
     }
 
-    getMaxViews(data) { //return most watched day
+    maxViews(data) { //return most watched day
         let [num, date, value] = [0, "", 0];
         
         for (let i = 0; i < data.length; i++) {
@@ -135,7 +135,7 @@ class analytics {
         return { date : date, value : value };
     }
 
-    getTotal(data) {    //return total views
+    total(data) {    //return total views
         let value = 0;
 
         for (let row of data) {
@@ -144,7 +144,7 @@ class analytics {
         return value;
     }
 
-    getAverageViews(data) {
+    averageViews(data) {
         const elapsedTime = (first, last) => {    //return elapsed time of two dates
             let [ft, lt] = [first.split("/"), last.split("/")];
             ft = new Date(ft[2],ft[1],ft[0]).getTime();
@@ -170,12 +170,12 @@ class analytics {
         }
     }
 
-    getDayAverages(data) {  //return each day of the weeks average views
+    dayAverages(data) {  //return each day of the weeks average views
         let dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         let result = {};
 
         for (let row in data) { //get the day for each row
-            let dateObj = this.getDateObject(data[row]["date"]);
+            let dateObj = this.dateObject(data[row]["date"]);
             let dayNum = new Date(dateObj["year"] + "/" + dateObj["month"] + "/" + dateObj["day"]).getDay();
             data[row]["day"] = dayArr[dayNum];;
         }
@@ -199,7 +199,7 @@ class analytics {
         return result;
     }
 
-    getActivity(data) { //return most/ least active day and week/weekend activity
+    activity(data) { //return most/ least active day and week/weekend activity
 
                 let mostActiveDay = {
                     day: "",
@@ -211,7 +211,7 @@ class analytics {
                     value : Infinity
                 }
 
-                let [week, weekend] = [0, 0];
+                let [week, weekend, activityString] = [0, 0, ""];
 
                 for (let day in data) {
 
@@ -241,11 +241,44 @@ class analytics {
                     }
                 }
 
+                if (week > weekend) { 
+                    activityString = "you are more active on week days";
+                } else {
+                    activityString = "you are more active on weekends";
+                }
+
         return {
             mostActiveDay : mostActiveDay["day"],
             leastActiveDay : leastActiveDay["day"],
-            week : week,
-            weekend : weekend
+            general: activityString
         };
+    }
+
+    createData() {
+        this.perDayViews = this.dayViews(this._csv);
+        this.perWeekViews = this.weekViews(this.perDayViews);
+        this.perMonthViews = this.monthViews(this.perDayViews);
+        this.perYearViews = this.yearViews(this.perDayViews);
+        this.minViews = this.minViews(this.perDayViews);
+        this.maxViews = this.maxViews(this.perDayViews);
+        this.totalViews = this.total(this.perDayViews);
+        this.averageViews = this.averageViews(this.perDayViews);
+        this.days = this.dayAverages(this.perDayViews);
+        this.activity = this.activity(this.days);
+    }
+
+    get data() {
+        return [
+            this.dayViews,
+            this.weekViews,
+            this.monthViews,
+            this.yearViews,
+            this.minViews,
+            this.maxViews,
+            this.totalViews,
+            this.averageViews,
+            this.days,
+            this.activity
+        ]
     }
 }
