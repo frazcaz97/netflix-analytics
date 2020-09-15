@@ -35,30 +35,19 @@ const getFile = () => {
             document.getElementById("progress-field").innerHTML = "Uploading csv file...";
         }
         reader.onload = function(event) {
-            let CSV = new csv(event.target.result); //create csv out of text file
-            CSV.create();
-            getAnalytics(CSV.csv);
-            
+            getAnalytics(event.target.result);
         }
         reader.readAsText(file);
     }
 }
 
-const getAnalytics = csv => {
+const getAnalytics = file => {
     document.getElementById("progress-field").innerHTML = "generating analytics...";
-    let a = new analytics();
-    const perDayViews = a.getDayViews(csv);
-    const perWeekViews = a.getWeekViews(perDayViews);
-    const perMonthViews = a.getMonthViews(perDayViews);
-    const perYearViews = a.getYearViews(perDayViews);
-    const minViews = a.getMinViews(perDayViews);
-    const maxViews = a.getMaxViews(perDayViews);
-    const totalViews = a.getTotal(perDayViews);
-    const averageViews = a.getAverageViews(perDayViews);
-    const days = a.getDayAverages(perDayViews);
-    const activity = a.getActivity(days);
 
-    console.log(activity);
+    const csv = createCSV(file);
+    const analytics = new Analytics(csv);
+    analytics.createData();
+    const analyticsData = analytics.data;
 
     showAnalytics();
 }
