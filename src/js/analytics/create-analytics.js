@@ -255,30 +255,30 @@ class Analytics {
     }
 
     createData() {
-        this.perDayViews = this.dayViews(this._csv);
-        this.perWeekViews = this.weekViews(this.perDayViews);
-        this.perMonthViews = this.monthViews(this.perDayViews);
-        this.perYearViews = this.yearViews(this.perDayViews);
-        this.minViews = this.minViews(this.perDayViews);
-        this.maxViews = this.maxViews(this.perDayViews);
-        this.totalViews = this.total(this.perDayViews);
-        this.averageViews = this.averageViews(this.perDayViews);
-        this.days = this.dayAverages(this.perDayViews);
-        this.activity = this.activity(this.days);
+        this.getDayViews = this.dayViews(this._csv);
+        this.getWeekViews = this.weekViews(this.getDayViews);
+        this.getMonthViews = this.monthViews(this.getDayViews);
+        this.getYearViews = this.yearViews(this.getDayViews);
+        this.getMinViews = this.minViews(this.getDayViews);
+        this.getMaxViews = this.maxViews(this.getDayViews);
+        this.getTotalViews = this.total(this.getDayViews);
+        this.getAverageViews = this.averageViews(this.getDayViews);
+        this.getDays = this.dayAverages(this.getDayViews);
+        this.getActivity = this.activity(this.getDays);
     }
 
     get data() {
         return [
-            this.dayViews,
-            this.weekViews,
-            this.monthViews,
-            this.yearViews,
-            this.minViews,
-            this.maxViews,
-            this.totalViews,
-            this.averageViews,
-            this.days,
-            this.activity
+            this.getDayViews,
+            this.getWeekViews,
+            this.getMonthViews,
+            this.getYearViews,
+            this.getMinViews,
+            this.getMaxViews,
+            this.getTotalViews,
+            this.getAverageViews,
+            this.getDays,
+            this.getActivity
         ]
     }
 }

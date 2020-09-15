@@ -44,15 +44,12 @@ const getFile = () => {
 const getAnalytics = file => {
     document.getElementById("progress-field").innerHTML = "generating analytics...";
 
-    const csv = createCSV(file);
-    const analytics = new Analytics(csv);
+    const analytics = new Analytics(createCSV(file));
     analytics.createData();
-    const analyticsData = analytics.data;
-
-    showAnalytics();
+    showAnalytics(analytics.data);
 }
 
-const showAnalytics = () => {
+const showAnalytics = data => {
     const endTime = new Date().getTime();
     const elapsedTime = (endTime - startTime);
     console.log(elapsedTime + " milliseconds");
