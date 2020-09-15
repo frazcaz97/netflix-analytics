@@ -1,117 +1,247 @@
+/*
+    || General page styles
+*/
+
 html {
-    background-color: rgb(37, 37, 37);
+    background-color: #252525;
 }
+
+/* | Header styles */
 
 .title-image {
     display: block;
+
     max-width: 100%;
     max-height: 100%;
-    margin-left: auto;
-    margin-right: auto;  
+
+    margin: auto;
 }
 
-.btn-wrapper input[type=file] {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    display:none;
-}
+/* | Main button styles */
+
+.btn-wrapper input[type=file], 
 .btn-wrapper input[type=button] {
+    display:none;
+
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
-    display:none;
+
 }
 
 .btn {
     display: table-cell;
+    
     width: 150px;
     height: 40px;
-    background-color: rgba(0,0,0,0);
+
     border: 2px solid #e50914;
     border-radius: 25px;
+
     outline: none;
+
     color: #e50914;
+
     text-transform: uppercase;
     text-align: center;
     vertical-align: middle;
     letter-spacing: 1px;
-    font-family: sans-serif;
-    font-size: 1.15em;  
+
+    font: 1.15em sans-serif;
 }
 .btn:hover {
     cursor: pointer;
+
     transition: 0.2s ease-in;
+
     background: #e50914;
+
     color: #ffffff;
-    font-weight: bolder;
+
+    font: bolder;
     
 }
 .btn:active {
     cursor: pointer;
+
     transition: 0ms;
-    border-color: #ffffff;
-    background-color: #ffffff;
+
+    border: #ffffff;
+
+    background: #ffffff;
 }
+
+/* | Footer styles */
+
+footer {
+    display: grid;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+
+    width: 100%;
+    height: 5%;
+
+    background-color: #171717;
+
+    grid-template-columns: 50% 50%;
+}
+
+    .link:hover {
+        cursor: pointer;
+
+        opacity: 50%;
+    }
+    .link:active {
+        cursor: pointer;
+
+        opacity: 0%;
+    }
+
+    #how-to {
+        align-self: center;
+
+        color: #ffffff;
+
+        font-family: sans-serif;
+        font-size: 1em;
+
+        position: absolute;
+        left: 1%;
+    }
+
+    #github-link {
+        position: absolute;
+        display: grid;
+        right: 1%;
+
+        grid-column-start: 1;
+        grid-template-columns: 175px 32px;
+    }
+        #github-image {
+            align-self: center;
+        }
+        #github-text {
+            color: #ffffff;
+
+            font-family: sans-serif;
+            font-size: 1em;
+
+            align-self: center;
+        }
+
+
+/*
+    || Home page styles
+*/
 
 #home-page-container {
     display: grid;
-    grid-template-columns: 20% 60% 20%;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
     position: absolute;
     top: 50%;
     left: 0%;
     right: 0%;
     bottom: 0%;
-}
-#file-bar-container {
-    grid-column-start: 2;
-    display:grid;
+
     grid-template-columns: 20% 60% 20%;
-    grid-template-rows: 10% 10%;
-}
-#progress-field {
-    grid-column-start: 2;
-    grid-row-start: 2;
-    display: block;
+
     max-width: 100%;
     max-height: 100%;
-    margin: auto;
-    padding-top: 10%;
-    color: #9c9c9c;
-    font-family: sans-serif;
-    font-size: 1.15vw;
-    text-transform: uppercase;
-}
-#show-btn {
-    grid-column-start: 2;
-    grid-row-start: 2;
-    display:block;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-    padding-top: 10%;
-}
-#show-label {
-    width: 400px !important;
-}
-#upload-btn {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
+
     margin: auto;
 }
-#submit-btn {
-    grid-column-start: 3;
-    grid-row-start: 1;
-    margin: auto;
-}
+
+    #file-bar-container {
+        display:grid;
+
+        grid-column-start: 2;
+        grid-template-columns: 20% 60% 20%;
+        grid-template-rows: 10% 10%;
+    }
+
+    #upload-btn {
+        grid-column-start: 1;
+        grid-row-start: 1;
+
+        display: block;
+
+        max-width: 100%;
+        max-height: 100%;
+
+        margin: auto;
+    }
+
+    #file-name-field {
+        grid-column-start: 2;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        color:#9c9c9c;
+
+        font-family: sans-serif;
+        font-size: 1.15vw;
+
+        border-bottom: 2px solid #9c9c9c;
+        
+        width: 95%;
+        height: 40px;
+
+        margin: auto;
+        line-height: 40px;
+    }
+
+    #progress-field {
+        grid-column-start: 2;
+        grid-row-start: 2;
+
+        display: block;
+
+        max-width: 100%;
+        max-height: 100%;
+
+        margin: auto;
+
+        padding-top: 10%;
+
+        color: #9c9c9c;
+
+        font-family: sans-serif;
+        font-size: 1.15vw;
+
+        text-transform: uppercase;
+    }
+
+    #submit-btn {
+        grid-column-start: 3;
+        grid-row-start: 1;
+
+        margin: auto;
+    }
+
+
+    #show-btn {
+        grid-column-start: 2;
+        grid-row-start: 2;
+
+        display:block;
+
+        max-width: 100%;
+        max-height: 100%;
+
+        margin: auto;
+
+        padding-top: 10%;
+    }
+        #show-label {
+            width: 400px !important;
+        }
+
+/*
+    || Keyframes
+*/
+
 @keyframes wipe-left {
     0% {
         transform: scaleX(0);
@@ -148,69 +278,4 @@ html {
         transform: scaleX(0);
         transform-origin: left;
     }
-}
-
-#file-name-field {
-    grid-column-start: 2;
-    text-align: center;
-    color:#9c9c9c;
-    font-family: sans-serif;
-    border-bottom: 2px solid #9c9c9c;
-    width: 95%;
-    height: 40px;
-    margin: auto;
-    line-height: 40px;
-    font-size: 1.15vw;
-    text-transform: uppercase;
-}
-
-footer {
-    position: absolute;
-    background-color: #171717;
-    width: 100%;
-    height: 5%;
-    left: 0px;
-    bottom: 0px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-#how-to {
-    align-self: center;
-    color: #ffffff;
-    font-family: sans-serif;
-    font-size: 1em;
-    position: absolute;
-    left: 1%;
-}
-
-#github-link {
-    position: absolute;
-    display: grid;
-    grid-column-start: 1;
-    grid-template-columns: 175px 32px;
-    right: 1%;
-}
-
-.link:hover {
-    cursor: pointer;
-    opacity: 50%;
-}
-.link:active {
-    cursor: pointer;
-    opacity: 0%;
-}
-
-#github-image {
-    align-self: center;
-}
-#github-text {
-    color: #ffffff;
-    font-family: sans-serif;
-    font-size: 1em;
-    align-self: center;
-}
-
-#analytics-page-container {
-    display: none;
 }
