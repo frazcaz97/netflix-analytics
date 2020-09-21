@@ -1,4 +1,4 @@
-class Analytics {
+export class CreateAnalytics {
 
     constructor(csv) {
         this._csv = csv;
@@ -170,9 +170,9 @@ class Analytics {
         }
     }
 
-    dayAverages(data) {  //return each day of the weeks average views
+    days(data) {  //return each day of the weeks average views
         let dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        let result = {};
+        let result = new Object;
 
         for (let row in data) { //get the day for each row
             let dateObj = this.dateObject(data[row]["date"]);
@@ -180,7 +180,7 @@ class Analytics {
             data[row]["day"] = dayArr[dayNum];;
         }
 
-        for (let day of dayArr) {   //get the average for each day
+        for (let day of dayArr) {   //get the average for each day  //THIS IS COULDS BE OPTIMISED
             let dayTotal = 0;
             let count = 0;
             let avg = 0;
@@ -193,9 +193,11 @@ class Analytics {
             }
 
             avg = dayTotal / count;
-            result[day] = avg.toFixed(2);
+            result[day] = {
+                "total" : dayTotal,
+                "average" : avg.toFixed(2)
+            }
         }
-
         return result;
     }
 
@@ -263,7 +265,7 @@ class Analytics {
         this.getMaxViews = this.maxViews(this.getDayViews);
         this.getTotalViews = this.total(this.getDayViews);
         this.getAverageViews = this.averageViews(this.getDayViews);
-        this.getDays = this.dayAverages(this.getDayViews);
+        this.getDays = this.days(this.getDayViews);
         this.getActivity = this.activity(this.getDays);
     }
 

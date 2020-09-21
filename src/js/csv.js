@@ -1,9 +1,9 @@
-const createCSV = function(file) {
+export const createCSV = file => {
     let data = [];
 
     let arr = file.split("\n");   //each new line is a row
         
-    arr.shift();    //we don't need the headers
+    arr.shift();    //remove the headers
     arr.pop();  //remove empty index from split
 
     for (let index of arr) {
