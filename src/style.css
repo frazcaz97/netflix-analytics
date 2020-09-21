@@ -72,6 +72,10 @@ html {
     background: #ffffff;
 }
 
+#show-label {
+    width: 400px !important;
+}
+
 /* | Footer styles */
 
 footer {
@@ -88,48 +92,50 @@ footer {
     grid-template-columns: 50% 50%;
 }
 
-    .link:hover {
-        cursor: pointer;
+.link:hover {
+    cursor: pointer;
 
-        opacity: 50%;
-    }
-    .link:active {
-        cursor: pointer;
+    opacity: 50%;
+}
+.link:active {
+    cursor: pointer;
 
-        opacity: 0%;
-    }
+    opacity: 0%;
+}
 
-    #how-to {
-        align-self: center;
+#how-to {
+    align-self: center;
 
-        color: #ffffff;
+    color: #ffffff;
 
-        font-family: sans-serif;
-        font-size: 1em;
+    font-family: sans-serif;
+    font-size: 1em;
 
-        position: absolute;
-        left: 1%;
-    }
+    position: absolute;
+    left: 1%;
+}
 
-    #github-link {
-        position: absolute;
-        display: grid;
-        right: 1%;
+#github-link {
+    position: absolute;
+    display: grid;
+    right: 1%;
+    
+    height: inherit;
 
-        grid-column-start: 1;
-        grid-template-columns: 175px 32px;
-    }
-        #github-image {
-            align-self: center;
-        }
-        #github-text {
-            color: #ffffff;
+    grid-column-start: 1;
+    grid-template-columns: 175px 32px;
+}
+#github-image {
+    align-self: center;
+}
+#github-text {
+    color: #ffffff;
 
-            font-family: sans-serif;
-            font-size: 1em;
+    font-family: sans-serif;
+    font-size: 1em;
 
-            align-self: center;
-        }
+    align-self: center;
+}
 
 
 /*
@@ -152,91 +158,89 @@ footer {
     margin: auto;
 }
 
-    #file-bar-container {
-        display:grid;
+#file-bar-container {
+    display:grid;
 
-        grid-column-start: 2;
-        grid-template-columns: 20% 60% 20%;
-        grid-template-rows: 10% 10%;
-    }
+    grid-column-start: 2;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 10% 10%;
+}
 
-    #upload-btn {
-        grid-column-start: 1;
-        grid-row-start: 1;
+#upload-btn {
+    grid-column-start: 1;
+    grid-row-start: 1;
 
-        display: block;
+    display: block;
 
-        max-width: 100%;
-        max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 
-        margin: auto;
-    }
+    margin: auto;
+}
 
-    #file-name-field {
-        grid-column-start: 2;
+#file-name-field {
+    grid-column-start: 2;
 
-        text-align: center;
-        text-transform: uppercase;
+    text-align: center;
+    text-transform: uppercase;
 
-        color:#9c9c9c;
+    color:#9c9c9c;
 
-        font-family: sans-serif;
-        font-size: 1.15vw;
+    font-family: sans-serif;
+    font-size: 1.15vw;
 
-        border-bottom: 2px solid #9c9c9c;
-        
-        width: 95%;
-        height: 40px;
+    border-bottom: 2px solid #9c9c9c;
+    
+    width: 95%;
+    height: 40px;
 
-        margin: auto;
-        line-height: 40px;
-    }
+    margin: auto;
+    line-height: 40px;
+}
 
-    #progress-field {
-        grid-column-start: 2;
-        grid-row-start: 2;
+#progress-field {
+    grid-column-start: 2;
+    grid-row-start: 2;
 
-        display: block;
+    display: block;
 
-        max-width: 100%;
-        max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 
-        margin: auto;
+    margin: auto;
 
-        padding-top: 10%;
+    padding-top: 10%;
 
-        color: #9c9c9c;
+    color: #9c9c9c;
 
-        font-family: sans-serif;
-        font-size: 1.15vw;
+    font-family: sans-serif;
+    font-size: 1.15vw;
 
-        text-transform: uppercase;
-    }
+    text-transform: uppercase;
+}
 
-    #submit-btn {
-        grid-column-start: 3;
-        grid-row-start: 1;
+#submit-btn {
+    grid-column-start: 3;
+    grid-row-start: 1;
 
-        margin: auto;
-    }
+    margin: auto;
+}
 
 
-    #show-btn {
-        grid-column-start: 2;
-        grid-row-start: 2;
+#show-btn-home {
+    grid-column-start: 2;
+    grid-row-start: 2;
 
-        display:block;
+    display:block;
 
-        max-width: 100%;
-        max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 
-        margin: auto;
+    margin: auto;
 
-        padding-top: 10%;
-    }
-        #show-label {
-            width: 400px !important;
-        }
+    padding-top: 10%;
+}
+
 
 /*
     || Keyframes
