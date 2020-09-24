@@ -1,5 +1,4 @@
 import { createCSV } from "./csv.js";
-import * as transition from "./transition.js";
 import { CreateAnalytics } from "./analytics/create-analytics.js";
 
 const reader = new FileReader();
@@ -63,5 +62,3 @@ const showAnalytics = data => {
 
 document.getElementById("upload").addEventListener("change", setFileName);
 document.getElementById("submit").addEventListener("click", getFile);
-document.getElementById("show-home").addEventListener("click", transition.transition);
-document.getElementById("show-analytics").addEventListener("click", transition.transition);
