@@ -3,38 +3,55 @@
     <head>
         <title>Analytics & Chill</title>
         <link rel="stylesheet" href="./style.css">
-        <script src="./js/csv.js"></script>
-        <script src="./js/analytics/create-analytics.js"></script>
-        <script src="./js/analytics/display-analytics.js"></script>
-        <script src="./js/transition.js"></script>
-        <script src="./js/script.js"></script>
+        <script src="js/transition.js"></script> 
+        <script src="./js/main.js" type="module"></script>
     </head>
 
     <body>
         <header>
-            <img src="./images/title.svg" class="title-image"/>
+            <img src="./images/title.svg" class="title-image" id="main-title"/>
         </header>
         <div id="home-page-container">
             <div id="file-bar-container">
                 <div class="btn-wrapper" id="upload-btn">
                     <label class="btn" id="upload-label" for="upload">Upload</label>
-                    <input id="upload" type="file" accept=".csv" onchange="setFileName()"/>
+                    <input id="upload" type="file" accept=".csv"/>
                 </div>
                 <div id="file-name-field">please upload a netflix history.csv file</div>
                 <div id="progress-field" style="display: none;"></div>
-                <div class="btn-wrapper" id="show-btn" style="display: none;">
-                    <label class="btn" id="show-label" for="show">Display Analytics</label>
-                    <input id="show" type="button" onclick="transition()">
+                <div class="btn-wrapper" id="show-btn-home" style="display: none;">
+                    <label class="btn" id="show-label" for="show-home">Display Analytics</label>
+                    <input id="show-analytics" type="button" onclick="transition()">
                 </div>
                 <div class="btn-wrapper" id="submit-btn">
                     <label class="btn" id="submit-label" for="submit">Submit</label>
-                    <input id="submit" type="button" onclick="getFile()"/>
+                    <input id="submit" type="button"/>
                 </div>
             </div>
         </div>
         <div id="screen-animation"></div>
         <div id="analytics-page-container" style="display: none;">
-            <input type="button" value="Test Transiton 2" onclick="transition()">
+            <div id="sub-header-container">
+                <div class="btn-wrapper" id="show-btn-analytics">
+                    <label class="btn" id="show-label" for="show-analytics">Display Analytics</label>
+                    <input id="show-home" type="button" onclick="transition()">
+                </div>
+                <object id="sub-title" data="images/title.svg" type="image/svg+xml"></object>
+                <script>
+                    document.getElementById("sub-title").setAttribute("height", "60px");
+                </script>
+            </div>
+            <div id="analytics-container">
+                <div id="table">
+                    This is where the table will go
+                </div>
+                <div id="pie-chart">
+                    This is where the pie-chart will go
+                </div>
+                <div id="graph-chart">
+                    This is where the graph-chart will go
+                </div>
+            </div>
         </div>
         <footer>
             <div class ="link" id="how-to" onclick="window.open('https://help.netflix.com/en/node/101917', '_blank'); window.focus();">How to get my netflix viewing history?</div>

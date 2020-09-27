@@ -122,7 +122,7 @@ footer {
     
     height: inherit;
 
-    grid-column-start: 1;
+    grid-column: 1;
     grid-template-columns: 175px 32px;
 }
 #github-image {
@@ -161,14 +161,14 @@ footer {
 #file-bar-container {
     display:grid;
 
-    grid-column-start: 2;
+    grid-column: 2;
     grid-template-columns: 20% 60% 20%;
     grid-template-rows: 10% 10%;
 }
 
 #upload-btn {
-    grid-column-start: 1;
-    grid-row-start: 1;
+    grid-column: 1;
+    grid-row: 1;
 
     display: block;
 
@@ -179,7 +179,7 @@ footer {
 }
 
 #file-name-field {
-    grid-column-start: 2;
+    grid-column: 2;
 
     text-align: center;
     text-transform: uppercase;
@@ -199,8 +199,8 @@ footer {
 }
 
 #progress-field {
-    grid-column-start: 2;
-    grid-row-start: 2;
+    grid-column: 2;
+    grid-row: 2;
 
     display: block;
 
@@ -220,16 +220,16 @@ footer {
 }
 
 #submit-btn {
-    grid-column-start: 3;
-    grid-row-start: 1;
+    grid-column: 3;
+    grid-row: 1;
 
     margin: auto;
 }
 
 
 #show-btn-home {
-    grid-column-start: 2;
-    grid-row-start: 2;
+    grid-column: 2;
+    grid-row: 2;
 
     display:block;
 
@@ -241,6 +241,75 @@ footer {
     padding-top: 10%;
 }
 
+/*
+    || Analytics page styles
+*/
+
+#analytics-page-container {
+    display: grid;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    max-width: 100%;
+    max-height: 95%;
+
+    grid-template-columns: auto;
+    grid-template-rows: 7.5% auto;
+
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+#sub-header-container {
+    display: grid;
+
+    grid-template-columns: 50% 50%;
+}
+#show-btn-analytics {
+    position: relative;
+
+    justify-self: left;
+
+    align-self: center;
+}
+
+#sub-title {
+    position: relative;
+
+    justify-self: end;
+
+    align-self: center;
+}
+
+#analytics-container {
+    display: grid;
+
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 50% 50%;
+
+    background-color: #ffffff;
+}
+#table {
+    display: inherit;
+    grid-column: 1;
+    grid-row: 1;
+    background-color: blue;
+}
+#pie-chart {
+    display: inherit;
+    grid-column: 1;
+    grid-row: 2;
+    background-color: blueviolet;
+}
+#graph-chart {
+    display: inherit;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    background-color: chocolate;
+}
 
 /*
     || Keyframes
