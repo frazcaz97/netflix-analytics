@@ -141,7 +141,7 @@ export class CreateAnalytics {
         for (let row of data) {
             value += row["views"];
         }
-        return value;
+        return { "total" : value }
     }
 
     averageViews(data) {
@@ -202,7 +202,6 @@ export class CreateAnalytics {
     }
 
     activity(data) { //return most/ least active day and week/weekend activity
-
                 let mostActiveDay = {
                     day: "",
                     value: 0
@@ -216,15 +215,15 @@ export class CreateAnalytics {
                 let [week, weekend, activityString] = [0, 0, ""];
 
                 for (let day in data) {
-
-                    if (data[day] < leastActiveDay["value"]) {  //found new least active day
+                    
+                    if (data[day].total < leastActiveDay["value"]) {  //found new least active day
                         leastActiveDay["day"] = day;
-                        leastActiveDay["value"] = data[day];
+                        leastActiveDay["value"] = data[day].total;
                     }
 
-                    if (data[day] > mostActiveDay["value"]) {   //found new most active day
+                    if (data[day].total > mostActiveDay["value"]) {   //found new most active day
                         mostActiveDay["day"] = day;
-                        mostActiveDay["value"] = data[day];
+                        mostActiveDay["value"] = data[day].total;
                     }
 
                     switch(day.toUpperCase()) { //total week/ weekend views
