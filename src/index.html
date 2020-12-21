@@ -9,9 +9,9 @@
 
     <body>
         <header>
-            <img src="./images/title.svg" class="title-image" id="main-title"/>
+            <!-- <img src="./images/title.svg" class="title-image" id="main-title"/> commenting out while I work on the analytics page-->
         </header>
-        <div id="home-page-container">
+        <div id="home-page-container" style="display: none;">  <!--adding style display and set to none so that I can work on the analytics page-->
             <div id="file-bar-container">
                 <div class="btn-wrapper" id="upload-btn">
                     <label class="btn" id="upload-label" for="upload">Upload</label>
@@ -26,14 +26,19 @@
                 <div class="btn-wrapper" id="submit-btn">
                     <label class="btn" id="submit-label" for="submit">Submit</label>
                     <input id="submit" type="button"/>
+                    <script>
+                        document.getElementById("submit").disabled = true;
+                        document.getElementById("submit-label").setAttribute("style", "opacity: 50%; pointer-events: none;");
+                    </script>
                 </div>
             </div>
         </div>
         <div id="screen-animation"></div>
-        <div id="analytics-page-container" style="display: none;">
+        <!-- <div id="analytics-page-container" style="display: none;">display should be none be default, removing while I work on the page -->
+        <div id="analytics-page-container">
             <div id="sub-header-container">
                 <div class="btn-wrapper" id="show-btn-analytics">
-                    <label class="btn" id="show-label" for="show-analytics">Display Analytics</label>
+                    <label class="btn" id="show-label" for="show-analytics">Return</label>
                     <input id="show-home" type="button" onclick="transition()">
                 </div>
                 <object id="sub-title" data="images/title.svg" type="image/svg+xml"></object>
@@ -42,9 +47,7 @@
                 </script>
             </div>
             <div id="analytics-container">
-                <div id="table">
-                    This is where the table will go
-                </div>
+                <div id="table"></div>
                 <div id="pie-chart">
                     This is where the pie-chart will go
                 </div>

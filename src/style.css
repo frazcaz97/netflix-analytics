@@ -289,26 +289,27 @@ footer {
 
     grid-template-columns: 35% 65%;
     grid-template-rows: 50% 50%;
-
-    background-color: #ffffff;
 }
 #table {
     display: inherit;
     grid-column: 1;
     grid-row: 1;
-    background-color: blue;
+    border: 2px solid #000000;
+    padding: 1%;
 }
 #pie-chart {
     display: inherit;
     grid-column: 1;
     grid-row: 2;
     background-color: blueviolet;
+    padding: 1%;
 }
 #graph-chart {
     display: inherit;
     grid-column: 2;
     grid-row: 1 / 3;
     background-color: chocolate;
+    padding: 1%;
 }
 
 /*

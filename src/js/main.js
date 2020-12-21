@@ -1,8 +1,9 @@
 import { createCSV } from "./csv.js";
 import { CreateAnalytics } from "./analytics/create-analytics.js";
+import { Table } from "./analytics/analytical-graphics/table.js";
 
 const reader = new FileReader();
-let startTime;
+let data;
 
 const setFileName = () => {
     const filename = document.getElementById("upload").files[0].name;
@@ -21,7 +22,6 @@ const setFileName = () => {
 }
 
 const getFile = () => {
-    startTime = new Date().getTime();
     const file = document.getElementById("upload").files[0];
 
     if (!file.name.includes(".csv")) {  //only accept csv files
@@ -43,22 +43,56 @@ const getFile = () => {
         reader.readAsText(file);
     }
 }
+//test code to load in csv while i work in the analytics page so I don't have to go through the home page everytime
+async function tempFunction() {
+    console.log("TEMP FUNCTION RUNNING");
+    const url = "http://127.0.0.1:8000";
+
+    await fetch("../src/python-backend/NetflixViewingHistory.csv", {mode: "no-cors"})
+    .then(response => console.log(response))
+}
+
+tempFunction();
+//end of test code
 
 const getAnalytics = file => {
     document.getElementById("progress-field").innerHTML = "generating analytics...";
+
     const analytics = new CreateAnalytics(createCSV(file));
     analytics.createData();
-    showAnalytics(analytics.data);
-}
+    data = analytics.data;
 
-const showAnalytics = data => {
-    const endTime = new Date().getTime();
-    const elapsedTime = (endTime - startTime);
-    console.log(elapsedTime + " milliseconds");
     document.getElementById("progress-field").style.display = "none";
     document.getElementById("show-btn-home").style.display = "inline";
+    displayAnalytics();
 }
 
+const displayAnalytics = () => {
+
+    //check if page is analytics, if it is then we can draw the analytics displays to size
+    const isAnalyticsPage = () => {
+        if (document.getElementById("analytics-page-container").style.display !== "none") {
+            createDisplays();
+        }
+    }
+    const interval = setInterval(isAnalyticsPage, 100);
+
+    //initialise all analytics objects
+    const createDisplays = () => {
+        clearInterval(interval);
+
+        const tableData = {
+            "total" : data[6],
+            "least" : data[4],
+            "most" : data[5],
+            "activity" : data[9]
+        } 
+
+        let table = new Table(tableData);
+        //add pie chart here
+        //add graph chart here
+    }
+}
 
 document.getElementById("upload").addEventListener("change", setFileName);
 document.getElementById("submit").addEventListener("click", getFile);
