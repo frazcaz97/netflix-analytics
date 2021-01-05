@@ -2,8 +2,18 @@ import { createCSV } from "./csv.js";
 import { CreateAnalytics } from "./analytics/create-analytics.js";
 import { Table } from "./analytics/analytical-graphics/table.js";
 
+//temporary import for automatic csv loading
+import { loadData } from "./load-data.js";
+//end of temporary
+
 const reader = new FileReader();
 let data;
+
+//temporary function call for loading csv data automatically
+let autoloadcsv = async () => {
+    return await loadData();
+}
+//end of temporary
 
 const setFileName = () => {
     const filename = document.getElementById("upload").files[0].name;
@@ -43,29 +53,34 @@ const getFile = () => {
         reader.readAsText(file);
     }
 }
-//test code to load in csv while i work in the analytics page so I don't have to go through the home page everytime
-async function tempFunction() {
-    console.log("TEMP FUNCTION RUNNING");
-    const url = "http://127.0.0.1:8000";
 
-    await fetch("../src/python-backend/NetflixViewingHistory.csv", {mode: "no-cors"})
-    .then(response => console.log(response))
-}
+//temporary function to autoload csv data
 
-tempFunction();
-//end of test code
-
-const getAnalytics = file => {
-    document.getElementById("progress-field").innerHTML = "generating analytics...";
-
-    const analytics = new CreateAnalytics(createCSV(file));
+const getAnalytics = async () => {
+    let csvData = await autoloadcsv();
+    const analytics = new CreateAnalytics(createCSV(csvData));
     analytics.createData();
     data = analytics.data;
-
-    document.getElementById("progress-field").style.display = "none";
-    document.getElementById("show-btn-home").style.display = "inline";
     displayAnalytics();
 }
+getAnalytics();
+
+//end of temporary
+
+//function is needed but will be using an altered version for auto loading csv
+
+// const getAnalytics = file => {
+//     document.getElementById("progress-field").innerHTML = "generating analytics...";
+
+//     const analytics = new CreateAnalytics(createCSV(file));
+//     analytics.createData();
+//     data = analytics.data;
+
+//     document.getElementById("progress-field").style.display = "none";
+//     document.getElementById("show-btn-home").style.display = "inline";
+//     displayAnalytics();
+// }
+//--------------------------------------------------------------------------------------------
 
 const displayAnalytics = () => {
 
